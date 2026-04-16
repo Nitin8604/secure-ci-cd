@@ -20,6 +20,17 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
+    # 🔍 SonarCloud (Code Scan)
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      with:
+        args: >
+          -Dsonar.projectKey=Nitin8604_secure-ci-cd
+          -Dsonar.organization=nitin8604
+          -Dsonar.sources=.
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
     # 🔐 Install Snyk
     - name: Install Snyk
       run: npm install -g snyk
